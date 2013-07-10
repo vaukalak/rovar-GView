@@ -5,7 +5,7 @@
  * Time: 3:21 PM
  * To change this template use File | Settings | File Templates.
  */
-package rovar.view
+package by.rovar.view
 {
 import com.genome2d.components.renderables.GRenderable;
 import com.genome2d.core.GNode;

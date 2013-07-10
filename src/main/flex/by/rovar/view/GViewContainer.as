@@ -5,7 +5,7 @@
  * Time: 2:16 PM
  * To change this template use File | Settings | File Templates.
  */
-package rovar.view
+package by.rovar.view
 {
 import com.genome2d.components.GTransform;
 import com.genome2d.components.renderables.GSprite;

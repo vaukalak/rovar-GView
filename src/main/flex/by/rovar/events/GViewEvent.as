@@ -5,7 +5,7 @@
  * Time: 5:19 PM
  * To change this template use File | Settings | File Templates.
  */
-package rovar.events
+package by.rovar.events
 {
 import by.rovar.events.BaseEvent;
 
