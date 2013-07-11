@@ -54,7 +54,7 @@
         <dependency>
             <groupId>com.genome2d</groupId>
             <artifactId>genome2d</artifactId>
-            <version>0.9.3.1176</version>
+            <version>0.9.3.1186</version>
             <type>swc</type>
         </dependency>
 
