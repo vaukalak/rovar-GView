@@ -14,6 +14,8 @@ import com.genome2d.core.GNodeFactory;
 
 import by.rovar.events.GViewEvent;
 
+import flash.display.Stage;
+
 public class GView extends BaseEventDispatcher
 {
 
@@ -29,6 +31,11 @@ public class GView extends BaseEventDispatcher
     protected function get faceClass():Class
     {
         return GRenderable;
+    }
+
+    public function get nativeStage():Stage
+    {
+        return stage.nativeStage;
     }
 
     public function get stage():GViewStage
@@ -62,10 +69,14 @@ public class GView extends BaseEventDispatcher
             {
                 dispatchEvent(new GViewEvent(GViewEvent.ADDED_TO_STAGE));
             }
+            else
+            {
+                parent.addEventListener(GViewEvent.ADDED_TO_STAGE, dispatchEvent, false, 0, true);
+            }
         }
     }
 
-    public function parent():GViewContainer
+    public function get parent():GViewContainer
     {
         return _parent;
     }

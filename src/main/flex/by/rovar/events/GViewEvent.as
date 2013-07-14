@@ -7,7 +7,7 @@
  */
 package by.rovar.events
 {
-import by.rovar.events.BaseEvent;
+import flash.events.Event;
 
 public class GViewEvent extends BaseEvent
 {
@@ -19,6 +19,12 @@ public class GViewEvent extends BaseEvent
     public function GViewEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false)
     {
         super(type, bubbles, cancelable);
+    }
+
+
+    override public function clone():Event
+    {
+        return new GViewEvent(type, bubbles, cancelable);
     }
 }
 }
