@@ -16,6 +16,10 @@ import by.rovar.events.GViewEvent;
 
 import flash.display.Stage;
 
+[Event(type="by.rovar.events.GViewEvent", name="addedToStage")]
+[Event(type="by.rovar.events.GViewEvent", name="removedFromStage")]
+[Event(type="by.rovar.events.GViewEvent", name="added")]
+[Event(type="by.rovar.events.GViewEvent", name="removed")]
 public class GView extends BaseEventDispatcher
 {
 
