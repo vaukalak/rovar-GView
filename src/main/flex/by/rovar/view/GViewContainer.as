@@ -13,6 +13,9 @@ import com.genome2d.core.GNode;
 
 public class GViewContainer extends GView
 {
+
+    private const _children:Vector.<GView> = new Vector.<GView>();
+
     override protected function get faceClass():Class
     {
         return GSprite;
@@ -22,6 +25,7 @@ public class GViewContainer extends GView
     {
         value.$setParent(this);
         targetNode.addChild(value.face.node);
+        _children.push(value);
         return value;
     }
 
@@ -29,7 +33,13 @@ public class GViewContainer extends GView
     {
         value.$setParent(null);
         targetNode.removeChild(value.face.node);
+        _children.splice(_children.indexOf(value), 1);
         return value;
+    }
+
+    public function get numChildren():uint
+    {
+        return _children.length;
     }
 
     public function get transform():GTransform
@@ -42,5 +52,9 @@ public class GViewContainer extends GView
         return face.node;
     }
 
+    public function getChildAt(i:int):GView
+    {
+        return _children[i];
+    }
 }
 }
