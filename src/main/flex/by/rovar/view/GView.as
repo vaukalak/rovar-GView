@@ -8,11 +8,15 @@
 package by.rovar.view
 {
 import by.rovar.events.BaseEventDispatcher;
+import by.rovar.events.GMouseEvent;
 
 import com.genome2d.components.renderables.GRenderable;
+import com.genome2d.components.renderables.GSprite;
 import com.genome2d.core.GNodeFactory;
 
 import by.rovar.events.GViewEvent;
+
+import com.genome2d.signals.GMouseSignal;
 
 import flash.display.Stage;
 
@@ -26,6 +30,28 @@ public class GView extends BaseEventDispatcher
     private var _parent:GViewContainer;
 
     private var _face:GRenderable;
+
+
+    public function GView()
+    {
+        addEventListener(GViewEvent.ADDED_TO_STAGE, onAddedToStage);
+    }
+
+    private function onAddedToStage(event:GViewEvent):void
+    {
+        removeEventListener(GViewEvent.ADDED_TO_STAGE, onAddedToStage);
+        var viewContainer:GViewContainer = this as GViewContainer;
+        if(viewContainer)
+        {
+            for(var i:uint = 0; i < viewContainer.numChildren; i++)
+            {
+                viewContainer.getChildAt(i).dispatchEvent(new GViewEvent(GViewEvent.ADDED_TO_STAGE));
+            }
+        }
+        parent.removeEventListener(GViewEvent.ADDED_TO_STAGE, onAddedToStage);
+
+    }
+
 
     public function get face():GRenderable
     {
@@ -72,10 +98,6 @@ public class GView extends BaseEventDispatcher
             if(stage)
             {
                 dispatchEvent(new GViewEvent(GViewEvent.ADDED_TO_STAGE));
-            }
-            else
-            {
-                parent.addEventListener(GViewEvent.ADDED_TO_STAGE, dispatchEvent, false, 0, true);
             }
         }
     }
