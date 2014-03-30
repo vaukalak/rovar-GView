@@ -44,7 +44,7 @@ public class GViewContainer extends GView
 	public function getChildByName(value : String) : GView {
 		var numChildren:int = _children.length;
 		for (var i:int=0; i<numChildren; ++i)
-			if (_children[i].name == name) return _children[i];
+			if (_children[i].name == value) return _children[i];
 
 		return null;
 	}
