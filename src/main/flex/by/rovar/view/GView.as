@@ -10,9 +10,12 @@ package by.rovar.view
 import by.rovar.events.BaseEventDispatcher;
 import by.rovar.events.GMouseEvent;
 
-import com.genome2d.components.renderables.GRenderable;
+	import com.genome2d.components.GTransform;
+
+	import com.genome2d.components.renderables.GRenderable;
 import com.genome2d.components.renderables.GSprite;
-import com.genome2d.core.GNodeFactory;
+	import com.genome2d.core.GNode;
+	import com.genome2d.core.GNodeFactory;
 
 import by.rovar.events.GViewEvent;
 
@@ -30,7 +33,7 @@ public class GView extends BaseEventDispatcher
     private var _parent:GViewContainer;
 
     private var _face:GRenderable;
-
+	private var _name:String;
 
     public function GView()
     {
@@ -111,5 +114,51 @@ public class GView extends BaseEventDispatcher
     {
         return _parent;
     }
+
+	//------------------
+	// ViSUAL PROPERTIES
+	//------------------
+
+	protected function get targetNode():GNode
+	{
+		return face.node;
+	}
+
+	public function get transform():GTransform
+	{
+		return face.node.transform;
+	}
+
+	public function set visible(value : Boolean) : void {
+		transform.visible = value;
+	}
+
+	public function get visible() : Boolean {
+		return transform.visible;
+	}
+
+	public function set x(value : Number) : void {
+		transform.x = value;
+	}
+
+	public function get x() : Number {
+		return transform.x;
+	}
+
+	public function set y(value : Number) : void {
+		transform.y = value;
+	}
+
+	public function get y() : Number {
+		return transform.y;
+	}
+
+	public function set name(value : String) : void {
+		_name = value;
+	}
+
+	public function get name() : String {
+		return _name;
+	}
 }
 }

@@ -37,19 +37,21 @@ public class GViewContainer extends GView
         return value;
     }
 
+	public function removeChildAt(value : int) : void {
+		removeChild(getChildAt(value));
+	}
+
+	public function getChildByName(value : String) : GView {
+		var numChildren:int = _children.length;
+		for (var i:int=0; i<numChildren; ++i)
+			if (_children[i].name == name) return _children[i];
+
+		return null;
+	}
+
     public function get numChildren():uint
     {
         return _children.length;
-    }
-
-    public function get transform():GTransform
-    {
-        return face.node.transform;
-    }
-
-    protected function get targetNode():GNode
-    {
-        return face.node;
     }
 
     public function getChildAt(i:int):GView
